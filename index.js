@@ -94,7 +94,7 @@ function createDownloadCardHtml (version) {
   card_html += '<div class="card-body">'
   card_html += '<h5 class="card-title">' + version.name + ' ' + version.version + '</h5>'
   card_html += '<p class="card-text" >' + version.description + '</p>'
-  card_html += '<div id="' + version.hash + '"> <a href="#" onclick="handleTorrentDownload("' + version.hash + '"") class="btn btn-primary d-flex justify-content-center flex-nowrap" style="  margin-top: 10px; margin-bottom: 10px;">download</a></div>'
+  card_html += '<div id="' + version.hash + '"> <a href="#" onclick="handleTorrentDownload(\'' + version.hash + '\')" class="btn btn-primary d-flex justify-content-center flex-nowrap" style="  margin-top: 10px; margin-bottom: 10px;">download</a></div>'
   card_html += '<a target="_blank" href="https://instant.io/#' + version.hash + '" class="btn btn-primary d-flex justify-content-center flex-nowrap" style="  margin-top: 10px; margin-bottom: 10px;">magnet</a>'
   card_html += '</div> </div>'
   return card_html
@@ -261,7 +261,7 @@ function loadModView (REPO_FILTERED) {
   const loadMore = function () {
     
     for (let i = 0; i < 20 && REPO_FILTERED.length >= 1; i++) {
-      var mod = REPO_FILTERED.pop();
+        let mod = REPO_FILTERED.pop();
         const imageIdentifier = "image-"+mod.ImagePreview;
 
         const item = document.createElement('div')
@@ -274,7 +274,10 @@ function loadModView (REPO_FILTERED) {
         {
           PREVIEW_CACHE.set(mod.ImagePreview, url)
           document.querySelectorAll('[id='+imageIdentifier+']').forEach(element=> 
-            element.src = url
+            {
+              console.log(element, imageIdentifier);
+              element.src = url
+            }
           );
         }
 

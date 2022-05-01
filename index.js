@@ -51,8 +51,15 @@ const saveData = (function () {
 let repositoryDatabaseHash = '3bf797e2c633110b949abb33f1b123ce37e54800'
 
 const announceList = [
+  ['wss://tracker.openwebtorrent.com'],
   ['wss://tracker.btorrent.xyz'],
-  ['wss://tracker.openwebtorrent.com']]
+  ['wss://tracker.openwebtorrent.com'],
+  ['wss://spacetradersapi-chatbox.herokuapp.com:443/announce'],
+  ['ws://tracker.files.fm:7072/announce'],
+  ['wss://tracker.files.fm:7073/announce'],
+  ['ws://160.20.145.79:8000']
+
+]
 
 globalThis.WEBTORRENT_ANNOUNCE = announceList
   .map(function (arr) {
